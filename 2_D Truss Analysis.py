@@ -117,10 +117,11 @@ matrix[6,26] = 1
 matrix[7,27] = 1
 
 extf = np.zeros(shape=(2*len(nodes),1))
+
 ###positive number is goin in neg direction
 
-#extf[6,0] = 13970
-#extf[26,0] = 13970
+extf[6,0] = 13970
+extf[26,0] = 13970
 
 
 
@@ -145,27 +146,11 @@ b = np.linalg.inv(matrix)
 ###print(matrix)
 ###
 #### forces are the lines..so Force[+1] = element position
-Forces = (b @ extf)
+
+# Forces = inv(a)*ExternalForces
+Forces = (b * extf)
 np.savetxt('Forces.csv',Forces)
-##
-Forces[0,0] = 1552.83
-Forces[1,0] = 1552.83
-Forces[2,0] = 6214
-Forces[3,0] = 6214
-Forces[4,0] = 1552.83
-Forces[5,0] = 1552.83
-Forces[6,0] = -1179
-Forces[7,0] = -1179
-Forces[8,0] = -2359.2
-Forces[9,0] = -2359.2
-Forces[10,0] = -1088
-Forces[11,0] = -1088
-Forces[18,0] = -1179
-Forces[17,0] = -1179
-Forces[16,0] = -2359.2
-Forces[15,0] = -2359.2
-Forces[14,0] = -1088
-Forces[13,0] = -1088
+
 
 
 
